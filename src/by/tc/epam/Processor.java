@@ -1,83 +1,112 @@
 package by.tc.epam;
 
-import by.tc.epam.tasks.task1.Task1;
-import by.tc.epam.tasks.task10.Task10;
-import by.tc.epam.tasks.task2.Task2;
-import by.tc.epam.tasks.task3.Task3;
-import by.tc.epam.tasks.task4.Task4;
-import by.tc.epam.tasks.task5.Task5;
-import by.tc.epam.tasks.task6.Task6;
-import by.tc.epam.tasks.task7.Task7;
-import by.tc.epam.tasks.task8.Task8;
-import by.tc.epam.tasks.task9.Task9;
-
-import java.util.Scanner;
+import by.tc.epam.taskset.task1.TaskLastDigitPow2;
+import by.tc.epam.taskset.task10.TaskFunctionInterations;
+import by.tc.epam.taskset.task2.TaskDaysInMonthCount;
+import by.tc.epam.taskset.task3.TaskSquareArea;
+import by.tc.epam.taskset.task4.TaskTwoEvenNumbers;
+import by.tc.epam.taskset.task5.TaskPerfectNumber;
+import by.tc.epam.taskset.task6.TaskElapsedSeconds;
+import by.tc.epam.taskset.task7.TaskDistanceToZero;
+import by.tc.epam.taskset.task8.TaskArithmeticExpression;
+import by.tc.epam.taskset.task9.TaskCircleSC;
 
 public class Processor {
     public static void main(String[] args) {
-        int number = 0;
-        Scanner in = new Scanner(System.in);
-        while (number != -1){
-            System.out.println("Pick task number 1 to 10\nPick -1 to exit\nTask: ");
+        int taskNumber = Integer.parseInt(args[0]);
+        if (taskNumber >= 0 && taskNumber <= 10) {
+            switch (taskNumber) {
+                case 1: {
+                    TaskLastDigitPow2 task = new TaskLastDigitPow2();
+                    int number = Integer.parseInt(args[1]);
 
-            number = in.nextInt();
-            if (number >= 0 && number <= 10){
-                switch(number){
-                    case 1: {
-                        Task1 task = new Task1();
-                        System.out.println(task.Start(in.nextInt()));
-                        break;
-                    }
-                    case 2: {
-                        Task2 task = new Task2();
-                        System.out.println(task.Start(in.nextInt(), in.nextInt()));
-                        break;
-                    }
-                    case 3: {
-                        Task3 task = new Task3();
-                        System.out.println(task.Start(in.nextDouble()));
-                        break;
-                    }
-                    case 4: {
+                    int result = task.Start(number);
+                    System.out.println(result);
+                    break;
+                }
+                case 2: {
+                    TaskDaysInMonthCount task = new TaskDaysInMonthCount();
+                    int month = Integer.parseInt(args[1]);
+                    int year = Integer.parseInt(args[2]);
 
-                        Task4 task = new Task4();
-                        System.out.println(task.Start(new int[]{in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt()}));
-                        break;
-                    }
-                    case 5: {
-                        Task5 task = new Task5();
-                        System.out.println(task.Start(in.nextInt()));
-                        break;
-                    }
-                    case 6: {
-                        Task6 task = new Task6();
-                        System.out.println(task.Start(in.nextInt()));
-                        break;
-                    }
-                    case 7: {
-                        Task7 task = new Task7();
-                        System.out.println(task.Start(in.nextInt(),in.nextInt(),in.nextInt(),in.nextInt()));
-                        break;
-                    }
-                    case 8: {
-                        Task8 task = new Task8();
-                        System.out.println(task.Start(in.nextDouble()));
-                        break;
-                    }
-                    case 9: {
-                        Task9 task = new Task9();
-                        System.out.println(task.Start(in.nextDouble()));
-                        break;
-                    }
-                    case 10: {
-                        Task10 task = new Task10();
-                        String[] result = task.Start(in.nextDouble(), in.nextDouble(), in.nextDouble());
-                        for (int i = 0; i < result.length; ++i){
-                            System.out.println(result[i]);
-                        }
+                    int result = task.Start(month, year);
+                    System.out.println(result);
+                    break;
+                }
+                case 3: {
+                    TaskSquareArea task = new TaskSquareArea();
+                    double outerSquareArea = Double.parseDouble(args[1]);
 
-                        break;
+                    double result = task.Start(outerSquareArea);
+                    System.out.println(result);
+                    break;
+                }
+                case 4: {
+                    TaskTwoEvenNumbers task = new TaskTwoEvenNumbers();
+                    int a = Integer.parseInt(args[1]);
+                    int b = Integer.parseInt(args[2]);
+                    int c = Integer.parseInt(args[3]);
+                    int d = Integer.parseInt(args[4]);
+
+                    boolean result = task.Start(new int[]{a, b, c, d});
+                    System.out.println(result);
+                    break;
+                }
+                case 5: {
+                    TaskPerfectNumber task = new TaskPerfectNumber();
+                    int number = Integer.parseInt(args[1]);
+
+                    boolean result = task.Start(number);
+                    System.out.println(result);
+                    break;
+                }
+                case 6: {
+                    TaskElapsedSeconds task = new TaskElapsedSeconds();
+                    int seconds = Integer.parseInt(args[1]);
+
+                    String result = task.Start(seconds);
+                    System.out.println(result);
+                    break;
+                }
+                case 7: {
+                    TaskDistanceToZero task = new TaskDistanceToZero();
+                    int a = Integer.parseInt(args[1]);
+                    int b = Integer.parseInt(args[2]);
+                    int c = Integer.parseInt(args[3]);
+                    int d = Integer.parseInt(args[4]);
+
+                    String result = task.Start(a, b, c, d);
+                    System.out.println(result);
+                    break;
+                }
+                case 8: {
+                    TaskArithmeticExpression task = new TaskArithmeticExpression();
+                    double x = Double.parseDouble(args[1]);
+
+                    double result = task.Start(x);
+                    System.out.println(result);
+                    break;
+                }
+                case 9: {
+                    TaskCircleSC task = new TaskCircleSC();
+                    double radius = Double.parseDouble(args[1]);
+
+                    double[] result = task.Start(radius);
+                    System.out.println(result[0] + " " + result[1]);
+                    break;
+                }
+                case 10: {
+                    TaskFunctionInterations task = new TaskFunctionInterations();
+                    double a = Double.parseDouble(args[1]);
+                    double b = Double.parseDouble(args[2]);
+                    double h = Double.parseDouble(args[2]);
+
+                    String[] result = task.Start(a,b,h);
+                    for (int i = 0; i < result.length; ++i) {
+                        System.out.println(result[i]);
                     }
+
+                    break;
                 }
             }
         }
